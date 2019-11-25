@@ -43,7 +43,7 @@ class Follow(models.Model):
         "the object is the target.",
         default=True
     )
-    flag = models.CharField(max_length=255, blank=True, db_index=True, default='')
+    flag = models.CharField(max_length=128, blank=True, db_index=True, default='')
     started = models.DateTimeField(default=now, db_index=True)
     objects = FollowManager()
 
