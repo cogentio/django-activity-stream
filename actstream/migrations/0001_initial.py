@@ -37,6 +37,8 @@ class Migration(migrations.Migration):
                 'ordering': ('-timestamp',),
             },
         ),
+        migrations.RunSQL('ALTER TABLE actstream_action DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;', reverse_sql=migrations.RunSQL.noop),
+        migrations.RunSQL('ALTER TABLE actstream_action CONVERT TO CHARACTER SET utf8;', reverse_sql=migrations.RunSQL.noop),
         migrations.CreateModel(
             name='Follow',
             fields=[
@@ -48,6 +50,8 @@ class Migration(migrations.Migration):
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, help_text='', to=settings.AUTH_USER_MODEL)),
             ],
         ),
+        migrations.RunSQL('ALTER TABLE actstream_follow DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;', reverse_sql=migrations.RunSQL.noop),
+        migrations.RunSQL('ALTER TABLE actstream_follow CONVERT TO CHARACTER SET utf8;', reverse_sql=migrations.RunSQL.noop),
         migrations.AlterUniqueTogether(
             name='follow',
             unique_together=set([('user', 'content_type', 'object_id')]),
