@@ -118,6 +118,7 @@ class Action(models.Model):
         'action_object_content_type',
         'action_object_object_id'
     )
+    action_type = models.PositiveSmallIntegerField(null=True, db_index=True)
 
     timestamp = models.DateTimeField(default=now, db_index=True)
 

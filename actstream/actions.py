@@ -128,7 +128,8 @@ def action_handler(verb, **kwargs):
         verb=text_type(verb),
         public=bool(kwargs.pop('public', True)),
         description=kwargs.pop('description', None),
-        timestamp=kwargs.pop('timestamp', now())
+        timestamp=kwargs.pop('timestamp', now()),
+        action_type=kwargs.pop('action_type', None),
     )
 
     for opt in ('target', 'action_object'):
