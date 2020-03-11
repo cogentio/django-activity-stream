@@ -27,3 +27,4 @@ class FollowAdmin(ModelAdmin):
 
 admin.site.register(models.Action, ActionAdmin)
 admin.site.register(models.Follow, FollowAdmin)
+admin.site.register(models.Comment)

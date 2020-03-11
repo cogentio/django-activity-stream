@@ -165,6 +165,28 @@ class Action(models.Model):
         return reverse(
             'actstream.views.detail', [self.pk])
 
+class Comment(models.Model):
+    """
+    A comment associated with an Action.
+    """
+
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="action_comments",
+        on_delete=models.CASCADE,
+    )
+    action = models.ForeignKey(
+        "actstream.Action",
+        related_name="comments",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
+    message = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return "%s commented on %s" % (self.author, self.action)
 
 # convenient accessors
 actor_stream = Action.objects.actor
